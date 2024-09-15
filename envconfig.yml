@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myenvconfig
+spec:
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo Hello-Sai; sleep 5; done"]
+    env:
+    - name: MYENV
+      valueFrom:
+        configMapKeyRef:
+          name: mymap                # Name of the ConfigMap
+          key: sample.conf           # Key in the ConfigMap whose value will be used for the environment variable

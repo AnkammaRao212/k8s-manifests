@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    value: test
+spec:
+  containers:
+  - name: c00
+    image: httpd
+    ports:
+    - containerPort: 80
+    readinessProbe:
+      httpGet:                       # HTTP URL to check periodically
+        path: /                      # It checks by running "curl http://localhost/" under / dir
+        port: 80                     # Specific port to check
+      initialDelaySeconds: 10        # Wait for the specified time before it runs the first probe

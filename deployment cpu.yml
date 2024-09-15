@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydeployments              # 2 spaces indentation for metadata fields
+spec:
+  replicas: 3                      # Pods, 2 spaces indentation for spec fields
+  selector:
+    matchLabels:
+      objtype: deployment          # 6 spaces indentation for nested properties
+  template:
+    metadata:
+      name: testpod8
+      labels:
+        objtype: deployment
+    spec:
+      containers:
+      - name: c00                   # 8 spaces indentation for containers list
+        image: ubuntu
+        command: ["/bin/bash", "-c", "while true; do echo Hello-Sai; sleep 5; done"]
+        resources:
+          requests:                 # 10 spaces indentation for nested fields under resources
+            cpu: "200m"

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "sleep 10000"] # Running sleep command for 10000 seconds
+    volumeMounts:                               # Mount definition inside the container
+    - name: podvol                              # Vol name of pod
+      mountPath: "/tmp/c1dir"                   # Path (folder)(vol) inside this container to share
+  - name: c2
+    image: centos
+    command: ["/bin/bash", "-c", "sleep 10000"]
+    volumeMounts:
+    - name: podvol
+      mountPath: "/tmp/c2dir"                   # Path (folder)(vol) inside this container to share
+  volumes:                                      # Definition of volume type
+  - name: podvol                                # Name of the volume of pod
+    emptyDir: {}                             	# Type of the volume

@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: resources # 2 spaces indentation for metadata fields
+spec:
+  containers:
+  - name: resource # 2 spaces indentation for containers list
+    image: centos # 4 spaces indentation for properties inside containers
+    command: ["/bin/bash", "-c", "while true; do echo Hello-Sai; sleep 5; done"] # 4 spaces indentation
+    resources:
+      requests: # 6 spaces indentation for resources and nested fields
+        memory: 64Mi # 8 spaces for requests and limits fields
+        cpu: 100m
+      limits:
+        memory: 128Mi
+        cpu: 200m

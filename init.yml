@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  initContainers:
+  - name: cl
+    image: centos
+    command: ["/bin/sh", "-c", "echo 'Hello_Sai' > /tmp/c1dir/saifile; sleep 20"]
+    volumeMounts:
+    - name: myvol                    # Volume name
+      mountPath: "/tmp/c1dir"
+  containers:
+  - name: c2
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo $(cat /tmp/c2dir/saifile); sleep 5; done"]
+    volumeMounts:
+    - name: myvol                     # Volume name
+      mountPath: "/tmp/c2dir"
+  volumes:
+  - name: myvol                       # Volume name
+    emptyDir: {}

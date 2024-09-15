@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myebsvolclaim
+spec:
+  accessModes:
+    - ReadWriteOnce                         # I want a volume which will have read & write access
+  resources:
+    requests:
+      storage: 1Gi                          # I want a volume having 1Gi (Claiming) for my pod from any available PV objects

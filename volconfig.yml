@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myvolconfig
+spec:
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo Hello-Sai; sleep 5; done"]
+    volumeMounts:
+    - name: testconfigmap
+      mountPath: "/tmp/config" # Directory inside container where config files will be mounted
+  volumes:
+  - name: testconfigmap
+    configMap:
+      name: mymap # Name of the ConfigMap
+      items:
+      - key: sample.conf # Key in the ConfigMap
+        path: sample.conf # File name in the container

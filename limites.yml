@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: myquota           # 2 spaces indentation for metadata fields
+spec:
+  hard:                   # 2 spaces indentation for spec fields
+    limits.cpu: "400m"    # 4 spaces indentation for hard and its nested fields
+    limits.memory: "400Mi"
+    requests.cpu: "200m"
+    requests.memory: "200Mi"

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demoservice
+spec:
+  ports:
+  - port: 80                             # Container port exposed
+    targetPort: 80                       # Pod port (VIP will be mapped to this port of pod)
+  selector:
+    name: deployment                     # Apply this service to any pods which has the specific label
+  type: ClusterIP                        # Specifies the service type i.e. VIP/Cluster IP

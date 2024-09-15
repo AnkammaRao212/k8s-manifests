@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployments
+spec:
+  replicas: 1
+  selector:                               # tells the controller which pods to watch/belong to
+    matchLabels:
+      name: deployment                    # should match with service file label
+  template:
+    metadata:
+      labels:
+        name: deployment
+    spec:
+      containers:
+      - name: c00
+        image: httpd
+        ports:
+        - containerPort: 80               # should match with port in service file

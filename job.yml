@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:                  
+  template:
+    metadata:
+      name: testjob
+    spec:
+      containers:
+      - name: mycont
+        image: centos
+        command: ["bin/bash", "-c", "echo Saidemy; sleep 20"] # Pod gets deleted after 20 sec
+      restartPolicy: Never
+

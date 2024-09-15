@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: myebsvol
+spec:
+  capacity:
+    storage: 1Gi                            # Out of 20 GB, you want only 1GB as PV object
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  awsElasticBlockStore:
+    volumeID: <MY-EBS-VOLUME-ID>            # Replace with your actual EBS volume ID
+    fsType: ext4

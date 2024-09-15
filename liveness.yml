@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: mypod
+spec:
+  containers:
+  - name: mycont
+    image: ubuntu
+    command: ["/bin/bash", "-c", "touch /tmp/healthy; sleep 10000"]
+    livenessProbe:                                                   # define the health check
+      exec:
+        command:                                                     # command to run periodically
+        - cat
+        - /tmp/myfile
+      initialDelaySeconds: 5                                         # Wait for the specified time before it runs the first probe
+      periodSeconds: 5                                               # Run the above command every 5 sec
+      timeoutSeconds: 30                                             # Seconds to timeout if the cmd itself is got stuck and not responding
