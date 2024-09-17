@@ -6,6 +6,8 @@ containerized applications. It helps manage clusters of containers and enables e
 orchestration, allowing easier deployment, scaling, and management of applications in a flexible 
 and scalable manner.
 
+![image](https://github.com/user-attachments/assets/65e4b73a-e451-44fd-8760-6d03bff1cf88)
 
-![Uploading image.png…]()
+
+
 
